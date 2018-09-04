@@ -41,10 +41,16 @@ func Int(s interface{}) sql.NullInt64 {
 }
 
 // Bool returns a sql.NullBool
-func Bool(b bool) sql.NullBool {
+func Bool(b interface{}) sql.NullBool {
+	if a, ok := b.(bool); ok {
+		return sql.NullBool{
+			Bool:  a,
+			Valid: true,
+		}
+	}
+
 	return sql.NullBool{
-		Bool:  b,
-		Valid: true,
+		Valid: false,
 	}
 }
 
