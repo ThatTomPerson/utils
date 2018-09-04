@@ -1,7 +1,1 @@
-# utils  ![Build Status][build] ![Go Report Card][report]
-
-
-
-
-[build]: https://travis-ci.org/ThatTomPerson/utils.svg?branch=master
-[report]: https://goreportcard.com/badge/github.com/ThatTomPerson/utils
+# utils  [![Build Status](https://travis-ci.org/ThatTomPerson/utils.svg?branch=master)](https://travis-ci.org/ThatTomPerson/utils) [![Go Report Card](https://goreportcard.com/badge/github.com/ThatTomPerson/utils)](https://goreportcard.com/report/github.com/ThatTomPerson/utils)
