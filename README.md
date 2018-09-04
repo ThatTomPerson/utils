@@ -1,1 +1,1 @@
-# utils
+# utils [![Build Status](https://travis-ci.org/ThatTomPerson/utils.svg?branch=master)](https://travis-ci.org/ThatTomPerson/utils)
