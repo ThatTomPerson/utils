@@ -5,8 +5,12 @@ import (
 )
 
 // String returns a sql.NullString
-func String(s string) sql.NullString {
-	return sql.NullString{String: s, Valid: s != ""}
+func String(s interface{}) sql.NullString {
+	if a, ok := s.(string); ok {
+		return sql.NullString{String: a, Valid: a != ""}
+	}
+
+	return sql.NullString{Valid: false}
 }
 
 // Int returns a sql.NullInt64
