@@ -12,15 +12,22 @@ func TestString(t *testing.T) {
 	t.Run("valid string", func(t *testing.T) {
 		v := null.String("foo")
 
-		assert.True(t, v.Valid, "string is not valid")
-		assert.Equal(t, v.String, "foo", fmt.Sprintf("expected foo but got %s", v.String))
+		assert.True(t, v.Valid, "")
+		assert.Equal(t, "foo", v.String, "")
 	})
 
-	t.Run("valid string", func(t *testing.T) {
+	t.Run("empty string", func(t *testing.T) {
 		v := null.String("")
 
-		assert.False(t, v.Valid, "string is valid")
-		assert.Equal(t, v.String, "", fmt.Sprintf("expected foo but got %s", v.String))
+		assert.True(t, v.Valid, "")
+		assert.Equal(t, v.String, "", "")
+	})
+
+	t.Run("nil string", func(t *testing.T) {
+		v := null.String(nil)
+
+		assert.False(t, v.Valid, "")
+		assert.Equal(t, "", v.String, "")
 	})
 }
 
@@ -49,8 +56,8 @@ func TestBool(t *testing.T) {
 	t.Run("invalid bool", func(t *testing.T) {
 		v := null.Bool("bar")
 
-		assert.False(t, v.Valid, "valid is true")
-		assert.Equal(t, v.Bool, false, "expected false but got true")
+		assert.True(t, v.Valid, "")
+		assert.Equal(t, false, v.Bool, "")
 	})
 }
 
@@ -71,14 +78,14 @@ func TestInt(t *testing.T) {
 		{desc: "uint32", val: uint32(10), expected: 10},
 		{desc: "uint64", val: uint64(10), expected: 10},
 		{desc: "nil", val: nil, expected: 0},
-		{desc: "string", val: "test", expected: 0},
+		{desc: "string", val: "5", expected: 5},
 	}
 	for _, tC := range testCases {
 		t.Run(tC.desc, func(t *testing.T) {
 			v := null.Int(tC.val)
 
-			assert.Equal(t, v.Int64, tC.expected, fmt.Sprintf("expected %d but got %d", tC.expected, v.Int64))
-			assert.Equal(t, v.Valid, tC.expected > 0, fmt.Sprintf("expected %v but got %v", tC.expected > 0, v.Valid))
+			assert.Equal(t, tC.expected, v.Int64, "")
+			assert.Equal(t, tC.expected > 0, v.Valid, "")
 		})
 	}
 }
