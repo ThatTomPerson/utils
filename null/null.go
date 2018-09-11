@@ -3,7 +3,15 @@ package null
 
 import (
 	"database/sql"
+
+	"github.com/go-sql-driver/mysql"
 )
+
+func Time(s interface{}) mysql.NullTime {
+	var v mysql.NullTime
+	v.Scan(s)
+	return v
+}
 
 // String returns a sql.NullString
 func String(s interface{}) sql.NullString {
