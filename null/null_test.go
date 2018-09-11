@@ -3,8 +3,8 @@ package null_test
 import (
 	"testing"
 
-	"github.com/ThatTomPerson/utils/null"
 	"github.com/stretchr/testify/assert"
+	"github.com/thattomperson/utils/null"
 )
 
 func TestString(t *testing.T) {
@@ -54,6 +54,20 @@ func TestBool(t *testing.T) {
 
 	t.Run("invalid bool", func(t *testing.T) {
 		v := null.Bool("bar")
+
+		assert.True(t, v.Valid)
+		assert.False(t, v.Bool)
+	})
+
+	t.Run("int bool true", func(t *testing.T) {
+		v := null.Bool(1)
+
+		assert.True(t, v.Valid)
+		assert.True(t, v.Bool)
+	})
+
+	t.Run("int bool false", func(t *testing.T) {
+		v := null.Bool(0)
 
 		assert.True(t, v.Valid)
 		assert.False(t, v.Bool)

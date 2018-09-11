@@ -6,6 +6,7 @@ require (
 	github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/davecheney/godoc2md v0.0.0-20180717000503-586c20adbfb9 // indirect
+	github.com/go-sql-driver/mysql v1.4.0
 	github.com/pkg/errors v0.8.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stretchr/testify v1.2.2
