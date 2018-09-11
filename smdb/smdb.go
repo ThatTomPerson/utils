@@ -8,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
 	"github.com/aws/aws-xray-sdk-go/xray"
+	"github.com/sirupsen/logrus"
 )
 
 type Creds struct {
@@ -29,11 +30,16 @@ func New(secret, database string) (*xray.DB, error) {
 		return nil, err
 	}
 
+	logrus.Infof("Connected to %s:********@tcp(%s:%d)/%s", creds.Username, creds.Host, creds.Port, database)
 	return xray.SQL(creds.Engine, creds.DSL(database))
 }
 
 func GetCreds(secret string) (*Creds, error) {
-	svc := secretsmanager.New(session.New())
+	ses := session.New()
+
+	ses.Config.Region = aws.String("ap-southeast-2")
+
+	svc := secretsmanager.New(ses)
 	input := &secretsmanager.GetSecretValueInput{
 		SecretId: aws.String(secret),
 	}

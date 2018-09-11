@@ -1,4 +1,4 @@
-module github.com/ThatTomPerson/utils
+module github.com/thattomperson/utils
 
 require (
 	github.com/aws/aws-sdk-go v1.15.27
